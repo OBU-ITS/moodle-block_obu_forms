@@ -91,7 +91,7 @@ class block_obu_forms extends block_base {
 			// If the authorisation is overdue, show visual alert (bold text)
 			$elapsed_days = (time() - $authorisation->request_date) / 86400;
 			if ($elapsed_days >= get_config('block_obu_forms', 'alertdays')) {
-				$form_list .= "<span style='font-weight:bold'>" . $request_date . "</span>)";
+				$form_list .= "<span style='font-weight:bold'>" . $request_date . "</span>";
 			}
 			else {
 				$form_list .= $request_date;  
