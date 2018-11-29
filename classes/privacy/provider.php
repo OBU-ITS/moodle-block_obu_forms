@@ -16,7 +16,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * OBU forms block - text strings
+ * OBU forms block - Privacy Subsystem implementation
  *
  * @package    obu_forms
  * @category   block
@@ -24,14 +24,20 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['privacy:metadata'] = 'The OBU Forms block does not store any personal data.';
+namespace block_obu_forms\privacy;
 
-$string['pluginname'] = 'OBU forms';
-$string['obu_forms'] = 'Forms';
-$string['obu_forms:addinstance'] = 'Add a new forms block';
-$string['obu_forms:myaddinstance'] = 'Add a new forms block to the My Moodle page';
+defined('MOODLE_INTERNAL') || die();
 
-$string['requireauthorisation'] = "Requiring authorisation";
+// Privacy Subsystem implementing null_provider
+class provider implements \core_privacy\local\metadata\null_provider {
 
-$string['alertdays'] = "Overdue days";
-$string['alertdaysdesc'] = "Days before authorisation is considered overdue, shown with bold text in block (default 7) ";
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}
